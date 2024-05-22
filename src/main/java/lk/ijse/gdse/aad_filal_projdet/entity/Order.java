@@ -7,10 +7,10 @@ import jakarta.persistence.OneToMany;
 
 import java.io.Serializable;
 
-@Entity
+
 public class Order implements Serializable {
     @Id
     private int order_id;
-    @ManyToOne
-    private Customer customer;
+   /* @ManyToOne
+    private Customer customer;*/
 }

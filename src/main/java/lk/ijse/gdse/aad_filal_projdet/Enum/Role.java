@@ -1,7 +1,5 @@
 package lk.ijse.gdse.aad_filal_projdet.Enum;
 
-public enum Gender {
-
-    Mane,
-    Women
+public enum Role {
+    ADMIN,USER
 }

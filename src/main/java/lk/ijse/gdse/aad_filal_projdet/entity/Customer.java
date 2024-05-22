@@ -3,11 +3,12 @@ package lk.ijse.gdse.aad_filal_projdet.entity;
 import jakarta.persistence.*;
 import lk.ijse.gdse.aad_filal_projdet.Enum.Gender;
 import lk.ijse.gdse.aad_filal_projdet.Enum.Level;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
+@Data@AllArgsConstructor@NoArgsConstructor
 @Entity
 public class Customer implements Serializable {
     @Id
@@ -16,21 +17,19 @@ public class Customer implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
-    private Date joined_date;
-    private Date dob;
+    private String joined_date;
+    private String dob;
 
     @Enumerated(EnumType.STRING)
     private Level level;
     private int points;
+
+    private String Building_No;
     private String address;
-    private String addressLine2;
+    private String Land;
     private String city;
-    private String postal_code;
 
     @Column(unique = true)
     private String email;
-
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
 
 }
