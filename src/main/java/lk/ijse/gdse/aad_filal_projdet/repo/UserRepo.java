@@ -1,12 +1,12 @@
 package lk.ijse.gdse.aad_filal_projdet.repo;
 
-import lk.ijse.gdse.aad_filal_projdet.entity.UserEntity;
+import lk.ijse.gdse.aad_filal_projdet.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface UserRepo extends JpaRepository<UserEntity,Integer> {
-    Optional<UserEntity> findByEmail(String email);
+public interface UserRepo extends JpaRepository<User,Integer> {
+    Optional<User> findByEmail(String email);
 
-    Optional<UserEntity> findByUsername(String username);
+    Optional<User> findByUsername(String username);
 }

@@ -1,6 +1,5 @@
 package lk.ijse.gdse.aad_filal_projdet.Enum;
 
-public enum Gender {
-    Male,
-    Female
+public enum Category {
+    INTERNATIONAL, LOCAL
 }

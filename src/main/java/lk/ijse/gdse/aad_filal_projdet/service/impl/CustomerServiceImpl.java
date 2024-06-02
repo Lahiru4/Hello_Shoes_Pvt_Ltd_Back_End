@@ -25,23 +25,24 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     public String saveCustomer(CustomerDTO customerDTO) {
-        System.out.println(customerDTO);
+        /*set data structure new customer*/
         customerDTO.setJoined_date(LocalDate.now().toString());
         customerDTO.setLevel(Level.NEW);
         customerDTO.setPoints(0);
+        /*end*/
 
-        boolean opt = customerRepo.existsById(customerDTO.getCustomer_id());
+        boolean opt = customerRepo.existsById(customerDTO.getCustomer_id());//check id duplicate
         if (opt) {
             return RespList.RSP_DUPLICATED;
         }else {
-            String emailOpt = customerRepo.existsByEmail(customerDTO.getEmail());
+            String emailOpt = customerRepo.existsByEmail(customerDTO.getEmail());//check email duplicate
             if (emailOpt == null) {
                 Customer save = customerRepo.save(modelMapper.map(customerDTO, Customer.class));
                 if (save != null) {
                     return RespList.RSP_SUCCESS;
                 }
             }else {
-                return RespList.RSP_DUPLICATED+"_Email Already Exists";
+                return RespList.RSP_DUPLICATED+"EmailAlreadyExists";
             }
         }
         return RespList.RSP_FAIL;

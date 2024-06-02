@@ -8,5 +8,8 @@ public class RespList {
     public final static String RSP_TOKEN_INVALID        = "RSP_TOKEN_INVALID";
     public final static String RSP_ERROR                = "RSP_ERROR";
     public final static String RSP_DUPLICATED           = "RSP_DUPLICATED";
+    public final static String EMAIL_DUPLICATED           = "EMAIL_DUPLICATED";
     public final static String RSP_FAIL                 = "RSP_FAIL";
+    public static final String CONTACT_NUMBER_DUPLICATED = "CONTACT_NUMBER_DUPLICATED";
+    public static final String CONTACT_DUPLICATED = "CONTACT_DUPLICATED";
 }

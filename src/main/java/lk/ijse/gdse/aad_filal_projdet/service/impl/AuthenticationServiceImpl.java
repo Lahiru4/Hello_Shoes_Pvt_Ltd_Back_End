@@ -1,7 +1,7 @@
 package lk.ijse.gdse.aad_filal_projdet.service.impl;
 
 import lk.ijse.gdse.aad_filal_projdet.dto.UserDTO;
-import lk.ijse.gdse.aad_filal_projdet.entity.UserEntity;
+import lk.ijse.gdse.aad_filal_projdet.entity.User;
 import lk.ijse.gdse.aad_filal_projdet.repo.UserRepo;
 import lk.ijse.gdse.aad_filal_projdet.reqandresp.response.JwtAuthResponse;
 import lk.ijse.gdse.aad_filal_projdet.reqandresp.secure.SignIn;
@@ -43,12 +43,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public JwtAuthResponse signUp(SignUp signUp) {
         String email = signUp.getEmail();
-        Optional<UserEntity> byEmail = userRepo.findByEmail(email);
+        Optional<User> byEmail = userRepo.findByEmail(email);
         if (byEmail.isPresent()) {
             return JwtAuthResponse.builder().token(null).message(RespList.RSP_DUPLICATED + "EMAIL").build();
         }
         String username = signUp.getUsername();
-        Optional<UserEntity> byUsername = userRepo.findByUsername(username);
+        Optional<User> byUsername = userRepo.findByUsername(username);
         if (byUsername.isPresent()) {
             return JwtAuthResponse.builder().token(null).message(RespList.RSP_DUPLICATED + "USERNAME").build();
         }
@@ -58,7 +58,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .password(passwordEncoder.encode(signUp.getPassword()))
                 .role(signUp.getRole())
                 .build();
-        var savedUser = userRepo.save(modelMapper.map(buildUser, UserEntity.class));
+        var savedUser = userRepo.save(modelMapper.map(buildUser, User.class));
         var genToken = jwtService.generateToken(savedUser);
         return JwtAuthResponse.builder().token(genToken).message(RespList.RSP_SUCCESS).build();
     }
