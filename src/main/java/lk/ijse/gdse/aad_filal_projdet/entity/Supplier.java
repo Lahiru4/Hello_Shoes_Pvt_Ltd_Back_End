@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,5 +27,10 @@ public class Supplier implements SuperEntity{
     private String postalCode;
     @Column(unique = true)
     private String email;
+    @OneToMany(mappedBy = "supplier")
+    private List<Items> itemEntities;
+
+    @OneToMany(mappedBy = "supplier")
+    private List<Accessories> accessories;
 
 }
