@@ -29,7 +29,6 @@ public class JWTConfigurationFilter extends OncePerRequestFilter {
             @NonNull HttpServletRequest request,
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("run this filter");
         final String userEmail;
         final  String jwt;
         final String authorizationHeader = request.getHeader("Authorization");

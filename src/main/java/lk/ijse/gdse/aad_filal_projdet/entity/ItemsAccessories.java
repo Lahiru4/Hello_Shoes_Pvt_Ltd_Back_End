@@ -9,22 +9,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Items implements SuperEntity {
+public class ItemsAccessories {
     @Id
     private String itemCode;
     private String itemDesc;
+    private String verities;
     @Column(columnDefinition = "LONGTEXT")
     private String itemPicture;
     private double unitPriceSale;
     private double unitPriceBuy;
-    private String status; //out stock or in stock
-    private String gender;
-    private String occasion;
-    private String verities;
-    private int size;
     private int qty;
-
     private double profitMargin;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Supplier supplier;
 }
